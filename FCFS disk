@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n, i, head, seek = 0;
+    int queue[100];
+
+    printf("Enter the number of disk I/O requests: ");
+    scanf("%d", &n);
+
+    printf("Enter the disk I/O request queue:\n");
+    for (i = 0; i < n; i++) {
+        printf("Request %d: ", i + 1);
+        scanf("%d", &queue[i]);
+    }
+
+    printf("Enter the initial position of disk head: ");
+    scanf("%d", &head);
+
+    printf("\nOrder of service:\n");
+    printf("%d", head);
+
+    for (i = 0; i < n; i++) {
+        seek += abs(queue[i] - head);
+        head = queue[i];
+        printf(" -> %d", queue[i]);
+    }
+
+    printf("\n\nTotal seek time: %d\n", seek);
+    printf("Average seek time: %.2f\n", (float)seek / n);
+
+    return 0;
+}
+
+
+
+OUTPUT:
+Enter the number of disk I/O requests: 8
+Enter the disk I/O request queue:
+Request 1: 98
+Request 2: 183
+Request 3: 41
+Request 4: 122
+Request 5: 14
+Request 6: 124
+Request 7: 65
+Request 8: 67
+Enter the initial position of disk head: 54
+
+Order of service:
+54 -> 98 -> 183 -> 41 -> 122 -> 14 -> 124 -> 65 -> 67
+
+Total seek time: 631
+Average seek time: 78.88
