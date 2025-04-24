@@ -35,3 +35,8 @@ echo "Current PATH settings: $PATH"
 
 echo "Current working directory is:"
 pwd
+
+commands
+chmod shell.sh
+./shell.sh
+
