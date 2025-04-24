@@ -1,0 +1,37 @@
+Write shell scripts to do the following:
+a. Display OS version, release number, kernel version
+b. Display top 10 processes in descending order
+c. Display processes with highest memory usage.
+d. Display current logged in user and log name.
+e. Display current shell, home directory, operating system type, current path setting, current
+working directory
+->
+
+
+
+echo "OS Version is:"
+lsb_release -r
+
+echo "Release number:"
+uname -r
+
+echo "Kernel Version:"
+uname -v
+
+echo "Top 10 processes in descending order (by memory usage):"
+ps -e o pid,ppid,cmd,%mem,%cpu --sort=-%mem | head -n 10
+
+echo "Processes with highest memory usage:"
+ps -e o pid,ppid,cmd,%mem,%cpu --sort=-%mem | head
+
+echo "Display current logged in user and log name:"
+echo "Current logged in user: $(whoami)"
+echo "Log Name: $(logname)"
+
+echo "Current working shell is: $SHELL ($0)"
+echo "Home directory is: $HOME"
+echo "OS Type is: $OSTYPE"
+echo "Current PATH settings: $PATH"
+
+echo "Current working directory is:"
+pwd
